@@ -18,14 +18,16 @@ async function fetchApi() {
       for (let i = 0; i < result.length; i++) {
         const post = result[i];
         postsElement.innerHTML += `<article class="blog-post-in-list">
-        <div>
-        <img class="featured-image" src="${post._embedded["wp:featuredmedia"][0].source_url}" alt="Blog"></img>
+        <div class="container">
+          <div class="post-image">
+          <img class="featured-image" src="${post._embedded["wp:featuredmedia"][0].source_url}" alt="Blog"></img>
+          </div>
+          <div class="post-content">
+          <h2>${post.title.rendered}</h2>
+                        <p>${post.excerpt.rendered}</p>
+                        <p><a href="post.html?id=${post.id}">Read more</a></p>
+          </div>    
         </div>
-        <div>
-        <h2>${post.title.rendered}</h2>
-                      <p>${post.excerpt.rendered}</p>
-                      <p><a href="post.html?id=${post.id}">Read more</a></p>
-        </div>        
             </article>`;
       }
     } else {
@@ -36,13 +38,28 @@ async function fetchApi() {
       const post = posts[0];
       console.log(url);
 
+      const dialog = document.querySelector("#dialog");
+      const dialogImage = document.querySelector("#dialog-image");
+      if (dialogImage) {
+        dialogImage.src = post._embedded["wp:featuredmedia"][0].source_url;
+        // dialogImage.setAttribute("src", post._embedded["wp:featuredmedia"][0].source_url);
+      }
+
       postsElement.innerHTML = `<a href="?" class="back-button"><- back</a>
       <article class="blog-post">
-        <img class="featured-image" src="${post._embedded["wp:featuredmedia"][0].source_url}" alt="Blog"></img>
+        <img id="post-featured-image" class="featured-image" src="${post._embedded["wp:featuredmedia"][0].source_url}" alt="Blog"></img>
         <h2>${post.title.rendered}</h2>
         <p>${post.content.rendered}</p>
         <p><a href="post.html?id=${post.id}">Read more</a></p>
       </article>`;
+
+      const postImage = document.querySelector("#post-featured-image");
+
+      postImage.addEventListener("click", () => {
+        // Open the modal dialog
+        // something like
+        // dialog.showModal();
+      });
     }
   } catch (error) {
     console.log("An error occured");

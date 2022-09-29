@@ -37,11 +37,7 @@ async function fetchApi() {
           e.target.classList.add("active"); // and make this button active
         } else if (e.target.classList.contains("second")) {
           // if the second one is clicked, set the position to -1/3%
-          carroussel.style.transform = "translateX(-33.33333333333%)";
-          e.target.classList.add("active"); // and make this button active
-        } else if (e.target.classList.contains("third")) {
-          // if the third one is clicked, set the position to -2/3%
-          carroussel.style.transform = "translatex(-66.6666666666666%)";
+          carroussel.style.transform = "translateX(-50%)";
           e.target.classList.add("active"); // and make this button active
         }
       }
