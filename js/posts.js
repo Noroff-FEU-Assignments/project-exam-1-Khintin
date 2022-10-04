@@ -1,3 +1,5 @@
+let page = 1;
+
 const urlAllPosts = "https://cristinasyv.com/wp-json/wp/v2/posts?_embed";
 const urlSinglePost =
   "https://cristinasyv.com/wp-json/wp/v2/posts?_embed&include[]=";
@@ -5,14 +7,11 @@ const postsElement = document.querySelector(".topic-post");
 const queryString = new URLSearchParams(window.location.search);
 const postId = queryString.get("id");
 
-async function fetchApi() {
+async function getPosts() {
   try {
-    // we didn't get an id so show all posts
-    const response = await fetch(urlAllPosts);
+    const response = await fetch(urlAllPosts + `&categories=18&page=${page}`);
     const result = await response.json();
-    console.log(result); // remove this later
-
-    postsElement.innerHTML = "";
+    page++;
 
     for (let i = 0; i < result.length; i++) {
       const post = result[i];
@@ -30,7 +29,9 @@ async function fetchApi() {
             </article>`;
     }
 
-
+    if (result.length < 10) {
+      document.querySelector(".btn-load-more").setAttribute("disabled", true);
+    }
   } catch (error) {
     console.log("An error occured");
     console.log(error);
@@ -40,4 +41,4 @@ async function fetchApi() {
   }
 }
 
-fetchApi();
+getPosts();
