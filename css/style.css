@@ -253,7 +253,7 @@ footer {
   backdrop-filter: opacity(0.5);
   background-size: cover;
   max-width: 100%;
-  margin: 5rem 0;
+  margin: 10rem 0rem;
   padding: 0 50px;
 }
 
@@ -293,12 +293,6 @@ textarea {
   width: 100%;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.5);
-}
-
-section.about-me {
-  flex-direction: column;
-  align-items: center;
-  margin: 3rem;
 }
 
 .about-me p {
@@ -354,12 +348,6 @@ section.about-me {
 .topic-post .blog-post img {
   float: none;
   width: 18em;
-}
-
-.about-me {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .carroussel-section {
@@ -433,6 +421,49 @@ section.about-me {
   font-weight: 300;
 }
 
+.gallery-picture {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.gallery-one {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  justify-content: center;
+  gap: 2rem;
+  max-width: auto;
+  flex-wrap: wrap;
+}
+
+.gallery-two {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  justify-content: center;
+  gap: 2rem;
+  max-width: auto;
+  flex-wrap: wrap;
+}
+
+.topic-onepost img {
+  display: block;
+  max-width: 300px;
+  margin: auto;
+  padding: 2rem;
+  align-items: center;
+}
+
+.topic-onepost p {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  size: 10px;
+  align-items: center;
+}
+
 /* TABLET */
 @media screen and (min-width: 768px) {
   .topic-post .blog-post-in-list .container {
@@ -455,7 +486,7 @@ section.about-me {
   }
   .topic-onepost img {
     display: block;
-    max-width: 50%;
+    max-width: 40%;
     margin: auto;
     padding: 2rem;
   }
@@ -464,19 +495,39 @@ section.about-me {
     margin: 0 3rem 0 3rem;
   }
 
-  .about-me .container-left {
+  .gallery-one {
     display: flex;
-    flex-wrap: wrap;
-    flex: 0 0 300px;
-    align-items: center;
-  }
-
-  .about-me img {
-    max-width: 100%;
-    display: flex;
+    gap: 2rem;
+    padding: 3rem;
+    object-fit: cover;
+    justify-content: center;
     margin: auto;
   }
+
+  .gallery-two {
+    display: flex;
+    padding: 3rem;
+    gap: 2rem;
+    object-fit: cover;
+    background-color: #f5f5f5;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .container-left {
+    display: inline-flex;
+    flex-direction: row;
+    padding: 2rem;
+  }
+
+  .container-right {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 2rem;
+    background-color: #f5f5f5;
+  }
 }
+
 /*PC*/
 
 @media screen and (min-width: 1200px) {
@@ -591,5 +642,22 @@ section.about-me {
     border-radius: 100%;
     height: 0.5em;
     width: 0.5em;
+  }
+
+  .gallery-one {
+    display: flex;
+    gap: 5rem;
+    padding: 5rem;
+    object-fit: cover;
+    justify-content: center;
+  }
+
+  .gallery-two {
+    display: flex;
+    padding: 5rem;
+    gap: 5rem;
+    object-fit: cover;
+    background-color: #f5f5f5;
+    justify-content: center;
   }
 }
